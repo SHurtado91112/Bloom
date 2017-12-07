@@ -12,6 +12,7 @@
 		28CD85F11FD9EB1000E10EE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28CD85EF1FD9EB1000E10EE2 /* Main.storyboard */; };
 		28CD85F31FD9EB1000E10EE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28CD85F21FD9EB1000E10EE2 /* Assets.xcassets */; };
 		28CD85F61FD9EB1000E10EE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28CD85F41FD9EB1000E10EE2 /* LaunchScreen.storyboard */; };
+		AA1856542E5C3A9A53783F56 /* Pods_Bloom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82658F7AD2488637B045658F /* Pods_Bloom.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		28CD85F21FD9EB1000E10EE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28CD85F51FD9EB1000E10EE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		28CD85F71FD9EB1000E10EE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7BF34849FD8C80879DB638EE /* Pods-Bloom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bloom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bloom/Pods-Bloom.debug.xcconfig"; sourceTree = "<group>"; };
+		7EF5FE422CB47E1E958FDA34 /* Pods-Bloom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bloom.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bloom/Pods-Bloom.release.xcconfig"; sourceTree = "<group>"; };
+		82658F7AD2488637B045658F /* Pods_Bloom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bloom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA1856542E5C3A9A53783F56 /* Pods_Bloom.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				28CD85EA1FD9EB1000E10EE2 /* Bloom */,
 				28CD85E91FD9EB1000E10EE2 /* Products */,
+				A3CAD910A98EF56FB31CDE52 /* Pods */,
+				F9952D33272F4527D2ED4692 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = Bloom;
 			sourceTree = "<group>";
 		};
+		A3CAD910A98EF56FB31CDE52 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7BF34849FD8C80879DB638EE /* Pods-Bloom.debug.xcconfig */,
+				7EF5FE422CB47E1E958FDA34 /* Pods-Bloom.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F9952D33272F4527D2ED4692 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				82658F7AD2488637B045658F /* Pods_Bloom.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28CD85FA1FD9EB1000E10EE2 /* Build configuration list for PBXNativeTarget "Bloom" */;
 			buildPhases = (
+				00A4EFF43CB29D6FDCD002BA /* [CP] Check Pods Manifest.lock */,
 				28CD85E41FD9EB1000E10EE2 /* Sources */,
 				28CD85E51FD9EB1000E10EE2 /* Frameworks */,
 				28CD85E61FD9EB1000E10EE2 /* Resources */,
+				464DEB645FA2634F26CF2FBC /* [CP] Embed Pods Frameworks */,
+				FE682FC20627FEBE2E1EEFAF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +157,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00A4EFF43CB29D6FDCD002BA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		464DEB645FA2634F26CF2FBC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bloom/Pods-Bloom-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE682FC20627FEBE2E1EEFAF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bloom/Pods-Bloom-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		28CD85E41FD9EB1000E10EE2 /* Sources */ = {
@@ -272,6 +347,7 @@
 		};
 		28CD85FB1FD9EB1000E10EE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BF34849FD8C80879DB638EE /* Pods-Bloom.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +363,7 @@
 		};
 		28CD85FC1FD9EB1000E10EE2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EF5FE422CB47E1E958FDA34 /* Pods-Bloom.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
