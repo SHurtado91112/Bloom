@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -39,21 +39,21 @@
 /* Begin PBXFileReference section */
 		1B809B474AEF9C48FD8EB0717D8086EF /* expanding-collection-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "expanding-collection-umbrella.h"; sourceTree = "<group>"; };
 		1D7E5AC0D712CCEFCF363EF8030115BF /* SubviewsForEach.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SubviewsForEach.swift; path = Source/Helpers/SubviewsForEach/SubviewsForEach.swift; sourceTree = "<group>"; };
-		1FDB5EABEB6910FBB9436B3FA4D9D41E /* Pods-Bloom.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Bloom.modulemap"; sourceTree = "<group>"; };
+		1FDB5EABEB6910FBB9436B3FA4D9D41E /* Pods-Bloom.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Bloom.modulemap"; sourceTree = "<group>"; };
 		30997ACCAC5B3805005DC40C10F005A2 /* Pods-Bloom-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Bloom-resources.sh"; sourceTree = "<group>"; };
 		3467E00389BF1B880FAD1F7292F0ED3D /* Pods-Bloom-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Bloom-acknowledgements.plist"; sourceTree = "<group>"; };
 		35104B2F1D05C01B63312833DF61AF50 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		493AA64DF0849B647F1BAF4036E311CB /* ScreenShotHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScreenShotHelper.swift; path = Source/Helpers/ScreenShot/ScreenShotHelper.swift; sourceTree = "<group>"; };
 		5D58A59AE266B077BF97CBF632388063 /* Pods-Bloom-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Bloom-umbrella.h"; sourceTree = "<group>"; };
-		6458F1C9A9819924B3B870D17E5F91D3 /* expanding-collection.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "expanding-collection.modulemap"; sourceTree = "<group>"; };
+		6458F1C9A9819924B3B870D17E5F91D3 /* expanding-collection.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "expanding-collection.modulemap"; sourceTree = "<group>"; };
 		65E2E8C449D43F25FA3637F08922CCEA /* Pods-Bloom-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Bloom-acknowledgements.markdown"; sourceTree = "<group>"; };
 		66972ED7B8B17160FEB321A0D512D971 /* BasePageCollectionCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BasePageCollectionCell.swift; path = Source/ExpandingViewController/CollectionView/Cells/BasePageCollectionCell.swift; sourceTree = "<group>"; };
 		776512A43C4679A30D4785BF3EFE37F2 /* TransitionDriver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionDriver.swift; path = Source/TransitionDriver/TransitionDriver.swift; sourceTree = "<group>"; };
 		7B368E984401CCF61FB489A9E1E46D78 /* PageCollectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageCollectionView.swift; path = Source/ExpandingViewController/CollectionView/PageCollectionView.swift; sourceTree = "<group>"; };
 		7CA2125DA0937ECBD581D782B1DE35DC /* ConfigurationHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConfigurationHelper.swift; path = Source/Helpers/ConfigurationHelper/ConfigurationHelper.swift; sourceTree = "<group>"; };
-		7EB7FD3BD7B56C9B4593094DAC858FB5 /* Pods_Bloom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Bloom.framework; path = "Pods-Bloom.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EB7FD3BD7B56C9B4593094DAC858FB5 /* Pods_Bloom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bloom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8340C89DBAC5E56F313B5088B376CCEB /* ExpandingViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpandingViewController.swift; path = Source/ExpandingViewController/ExpandingViewController.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A55DF8C788D927C04FAD1E5060BCFC03 /* ConstraintsHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintsHelper.swift; path = "Source/Helpers/Constraints Helpers/ConstraintsHelper.swift"; sourceTree = "<group>"; };
 		A8D917F6027113262E627F3F17B0E11E /* Pods-Bloom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Bloom.debug.xcconfig"; sourceTree = "<group>"; };
 		ACD26B46A68C740F1AD66618E05F9B35 /* Pods-Bloom-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Bloom-dummy.m"; sourceTree = "<group>"; };
@@ -67,7 +67,7 @@
 		DE948270E93EFDDF37A82F031E3B24A5 /* expanding-collection-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "expanding-collection-dummy.m"; sourceTree = "<group>"; };
 		ECFDD1708B5D1A37347D61F949351973 /* CornerAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CornerAnimatable.swift; path = Source/Helpers/Animations/CornerAnimatable/CornerAnimatable.swift; sourceTree = "<group>"; };
 		EFE52EE2CB40A583568B5F1E4A64F611 /* ExpandingTableViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpandingTableViewController.swift; path = Source/ExpandingTableViewController/ExpandingTableViewController.swift; sourceTree = "<group>"; };
-		F62EA23EF086C8386E82BD2F76529DCF /* expanding_collection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = expanding_collection.framework; path = "expanding-collection.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F62EA23EF086C8386E82BD2F76529DCF /* expanding_collection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = expanding_collection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +90,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0611DB04412025A2FF8B8F5413D1BCDD /* expanding-collection */ = {
+		0611DB04412025A2FF8B8F5413D1BCDD /* ExpandingCollection */ = {
 			isa = PBXGroup;
 			children = (
 				66972ED7B8B17160FEB321A0D512D971 /* BasePageCollectionCell.swift */,
@@ -106,8 +106,7 @@
 				776512A43C4679A30D4785BF3EFE37F2 /* TransitionDriver.swift */,
 				0CAB668B02087B00D666EB37C389B048 /* Support Files */,
 			);
-			name = "expanding-collection";
-			path = "expanding-collection";
+			path = ExpandingCollection;
 			sourceTree = "<group>";
 		};
 		0CAB668B02087B00D666EB37C389B048 /* Support Files */ = {
@@ -181,7 +180,7 @@
 		A68267C924F111925DD431B60594330A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0611DB04412025A2FF8B8F5413D1BCDD /* expanding-collection */,
+				0611DB04412025A2FF8B8F5413D1BCDD /* ExpandingCollection */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
