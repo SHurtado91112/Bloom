@@ -20,6 +20,7 @@ class BloomAPI {
             if let data = data {
                 do {
                     // Convert the data to JSON
+                    print(data)
                     let jsonSerialized = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]
                     if let json = jsonSerialized {
                         success(json)
@@ -49,7 +50,7 @@ class BloomAPI {
     
     func imageSearch(query: String?, success: @escaping (Dictionary<String, Any>) -> (), failure: @escaping (Error) -> ()) {
         guard let query = query?.stringByAddingPercentEncodingForURLQueryValue() else{return}
-        let stringURL = "\(Constants.customSearchBaseURL)key=\(Constants.googleAPIKey)&cx=\(Constants.cx)&q=\(query)&searchType=image"
+        let stringURL = "\(Secrets.customSearchBaseURL)key=\(Secrets.googleAPIKey)&cx=\(Secrets.cx)&q=\(query)&searchType=image"
         
         if let url = URL(string: stringURL) {
             httpRequest(with: url, method: "GET", success: { (data) in

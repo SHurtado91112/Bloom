@@ -14,6 +14,7 @@
 		2838F2131FDB529400151FDF /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2838F2121FDB529400151FDF /* Feature.swift */; };
 		2838F2151FDB529C00151FDF /* Sighting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2838F2141FDB529C00151FDF /* Sighting.swift */; };
 		2838F2181FDB643400151FDF /* BloomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2838F2171FDB643400151FDF /* BloomAPI.swift */; };
+		2838F21A1FDC721100151FDF /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2838F2191FDC721100151FDF /* Secrets.swift */; };
 		28CD85EC1FD9EB1000E10EE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CD85EB1FD9EB1000E10EE2 /* AppDelegate.swift */; };
 		28CD85EE1FD9EB1000E10EE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CD85ED1FD9EB1000E10EE2 /* ViewController.swift */; };
 		28CD85F11FD9EB1000E10EE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28CD85EF1FD9EB1000E10EE2 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 		2838F2121FDB529400151FDF /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
 		2838F2141FDB529C00151FDF /* Sighting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sighting.swift; sourceTree = "<group>"; };
 		2838F2171FDB643400151FDF /* BloomAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomAPI.swift; sourceTree = "<group>"; };
+		2838F2191FDC721100151FDF /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		28CD85E81FD9EB1000E10EE2 /* Bloom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bloom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28CD85EB1FD9EB1000E10EE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28CD85ED1FD9EB1000E10EE2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				28CD85EB1FD9EB1000E10EE2 /* AppDelegate.swift */,
 				2838F20B1FDA05E500151FDF /* GTBackground.swift */,
 				2838F20D1FDA064F00151FDF /* Util.swift */,
+				2838F2191FDC721100151FDF /* Secrets.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2838F20C1FDA05E500151FDF /* GTBackground.swift in Sources */,
+				2838F21A1FDC721100151FDF /* Secrets.swift in Sources */,
 				2838F2131FDB529400151FDF /* Feature.swift in Sources */,
 				2838F2181FDB643400151FDF /* BloomAPI.swift in Sources */,
 				28CD85EE1FD9EB1000E10EE2 /* ViewController.swift in Sources */,
