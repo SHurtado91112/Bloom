@@ -11,6 +11,14 @@ import UIKit
 import SceneKit
 
 class ArrowView : UIImageView {}
+struct Constants {
+    //Google Custom Search API
+    static let googleAPIKey = "AIzaSyA9FqAiHCs8vg9TXe67RRXSitSg0vfjkf0"
+    static let customSearchBaseURL = "https://www.googleapis.com/customsearch/v1?"
+    static let cx = "015833694529387264024:u0e7yzzyu-y"
+//    key=INSERT_YOUR_API_KEY&cx=017576662512468239146:omuauf_lfve&q=lectures
+}
+
 extension UIImageView {
     func setUpParallax(rate: Double) {
         //three rates max
@@ -45,6 +53,14 @@ extension UIImageView {
                 })
             }
         })
+    }
+}
+
+extension String {
+    func stringByAddingPercentEncodingForURLQueryValue() -> String? {
+        let allowedCharacters = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~&=")
+        
+        return self.addingPercentEncoding(withAllowedCharacters: allowedCharacters)
     }
 }
 

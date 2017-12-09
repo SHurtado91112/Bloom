@@ -52,11 +52,12 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ilo-5W-DKP" userLabel="FrontView">
                         <rect key="frame" x="0.0" y="0.0" width="256" height="335"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SKe-iC-v2m">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flower-default" translatesAutoresizingMaskIntoConstraints="NO" id="SKe-iC-v2m">
                                 <rect key="frame" x="0.0" y="0.0" width="256" height="335"/>
+                                <color key="backgroundColor" red="0.85490196078431369" green="0.83921568627450982" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ATCOASTAL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkO-5v-KVq">
-                                <rect key="frame" x="62" y="10" width="132" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ATCOASTAL" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkO-5v-KVq">
+                                <rect key="frame" x="8" y="10" width="240" height="29"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="NO"/>
                                 </accessibility>
@@ -134,6 +135,7 @@
                             <constraint firstAttribute="bottom" secondItem="SKe-iC-v2m" secondAttribute="bottom" id="88C-c6-ypT"/>
                             <constraint firstItem="r5R-Yf-1oc" firstAttribute="leading" secondItem="Ilo-5W-DKP" secondAttribute="leading" constant="8" id="8Aw-iW-BbZ"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="256" id="8NA-Mk-PID"/>
+                            <constraint firstItem="fkO-5v-KVq" firstAttribute="leading" secondItem="Ilo-5W-DKP" secondAttribute="leading" constant="8" id="ATG-8d-pJp"/>
                             <constraint firstItem="fkO-5v-KVq" firstAttribute="centerX" secondItem="Ilo-5W-DKP" secondAttribute="centerX" id="BJO-Pu-mS8"/>
                             <constraint firstItem="zNU-H9-04X" firstAttribute="centerY" secondItem="r5R-Yf-1oc" secondAttribute="centerY" id="KI9-1s-JOy"/>
                             <constraint firstItem="r5R-Yf-1oc" firstAttribute="width" secondItem="zNU-H9-04X" secondAttribute="width" id="L3Z-sm-htE"/>
@@ -142,6 +144,7 @@
                             <constraint firstItem="SKe-iC-v2m" firstAttribute="top" secondItem="Ilo-5W-DKP" secondAttribute="top" id="cdV-Au-YYP"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="335" id="fE1-h4-MaA"/>
                             <constraint firstAttribute="trailing" secondItem="zNU-H9-04X" secondAttribute="trailing" constant="6" id="h3N-fS-E5I"/>
+                            <constraint firstAttribute="trailing" secondItem="fkO-5v-KVq" secondAttribute="trailing" constant="8" id="jnP-n1-arR"/>
                             <constraint firstAttribute="height" constant="335" id="kUM-zx-yO5"/>
                             <constraint firstItem="zNU-H9-04X" firstAttribute="leading" secondItem="NLU-Ur-P5X" secondAttribute="trailing" constant="1" id="oj2-ea-iod"/>
                             <constraint firstAttribute="trailing" secondItem="SKe-iC-v2m" secondAttribute="trailing" id="p2k-0u-GzM"/>
@@ -173,4 +176,7 @@
             <point key="canvasLocation" x="138" y="78"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="flower-default" width="512" height="501"/>
+    </resources>
 </document>

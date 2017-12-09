@@ -10,6 +10,10 @@
 		2838F2091FD9FA9000151FDF /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2838F2081FD9FA9000151FDF /* BaseCell.swift */; };
 		2838F20C1FDA05E500151FDF /* GTBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2838F20B1FDA05E500151FDF /* GTBackground.swift */; };
 		2838F20E1FDA064F00151FDF /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2838F20D1FDA064F00151FDF /* Util.swift */; };
+		2838F2111FDB528900151FDF /* Flower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2838F2101FDB528900151FDF /* Flower.swift */; };
+		2838F2131FDB529400151FDF /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2838F2121FDB529400151FDF /* Feature.swift */; };
+		2838F2151FDB529C00151FDF /* Sighting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2838F2141FDB529C00151FDF /* Sighting.swift */; };
+		2838F2181FDB643400151FDF /* BloomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2838F2171FDB643400151FDF /* BloomAPI.swift */; };
 		28CD85EC1FD9EB1000E10EE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CD85EB1FD9EB1000E10EE2 /* AppDelegate.swift */; };
 		28CD85EE1FD9EB1000E10EE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CD85ED1FD9EB1000E10EE2 /* ViewController.swift */; };
 		28CD85F11FD9EB1000E10EE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28CD85EF1FD9EB1000E10EE2 /* Main.storyboard */; };
@@ -23,6 +27,10 @@
 		2838F2081FD9FA9000151FDF /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		2838F20B1FDA05E500151FDF /* GTBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTBackground.swift; sourceTree = "<group>"; };
 		2838F20D1FDA064F00151FDF /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		2838F2101FDB528900151FDF /* Flower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flower.swift; sourceTree = "<group>"; };
+		2838F2121FDB529400151FDF /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
+		2838F2141FDB529C00151FDF /* Sighting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sighting.swift; sourceTree = "<group>"; };
+		2838F2171FDB643400151FDF /* BloomAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomAPI.swift; sourceTree = "<group>"; };
 		28CD85E81FD9EB1000E10EE2 /* Bloom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bloom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28CD85EB1FD9EB1000E10EE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28CD85ED1FD9EB1000E10EE2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,10 +68,29 @@
 		2838F20A1FDA05D800151FDF /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				28CD85EB1FD9EB1000E10EE2 /* AppDelegate.swift */,
 				2838F20B1FDA05E500151FDF /* GTBackground.swift */,
 				2838F20D1FDA064F00151FDF /* Util.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		2838F20F1FDB526D00151FDF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2838F2101FDB528900151FDF /* Flower.swift */,
+				2838F2141FDB529C00151FDF /* Sighting.swift */,
+				2838F2121FDB529400151FDF /* Feature.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2838F2161FDB642100151FDF /* API */ = {
+			isa = PBXGroup;
+			children = (
+				2838F2171FDB643400151FDF /* BloomAPI.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		28CD85DF1FD9EB1000E10EE2 = {
@@ -88,7 +115,8 @@
 			isa = PBXGroup;
 			children = (
 				2838F20A1FDA05D800151FDF /* Util */,
-				28CD85EB1FD9EB1000E10EE2 /* AppDelegate.swift */,
+				2838F2161FDB642100151FDF /* API */,
+				2838F20F1FDB526D00151FDF /* Model */,
 				28CD85FD1FD9F3EA00E10EE2 /* View */,
 				28CD85EF1FD9EB1000E10EE2 /* Main.storyboard */,
 				28CD85F21FD9EB1000E10EE2 /* Assets.xcassets */,
@@ -249,9 +277,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2838F20C1FDA05E500151FDF /* GTBackground.swift in Sources */,
+				2838F2131FDB529400151FDF /* Feature.swift in Sources */,
+				2838F2181FDB643400151FDF /* BloomAPI.swift in Sources */,
 				28CD85EE1FD9EB1000E10EE2 /* ViewController.swift in Sources */,
+				2838F2111FDB528900151FDF /* Flower.swift in Sources */,
 				2838F20E1FDA064F00151FDF /* Util.swift in Sources */,
 				2838F2091FD9FA9000151FDF /* BaseCell.swift in Sources */,
+				2838F2151FDB529C00151FDF /* Sighting.swift in Sources */,
 				28CD85EC1FD9EB1000E10EE2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
