@@ -21,5 +21,6 @@ class Flower : NSObject {
         genus = dict["GENUS"] as? String
         species = dict["SPECIES"] as? String
         comName = dict ["COMNAME"] as? String
+        print("\(genus)\n\(species)\n\(comName)")
     }
 }

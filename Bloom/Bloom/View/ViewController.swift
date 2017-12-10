@@ -32,10 +32,11 @@ extension ViewController {
         //set up gradient
         gradient()
         
+        //load data and fill data source
         loadData()
-    
+        
+        //add other features and register cell
         registerCell()
-        fillCellIsOpenArray()
         addGesture(to: collectionView!)
         configureNavBar()
     }
@@ -79,15 +80,21 @@ extension ViewController {
 extension ViewController {
     
     fileprivate func loadData() {
-//        let dictArr = [
-//        ["GENUS" : "Fremontodendron","SPECIES":"californicum","COMNAME":"California flannelbush"],["GENUS":"Triteleia","SPECIES":"laxa","COMNAME":"Ithuriels spear"],["GENUS":"Mimulus","SPECIES":"primuloides","COMNAME":"Primrose monkeyflower"],["GENUS":"Viola","SPECIES":"sheltonii","COMNAME":"Sheltons violet"],["GENUS":"Polemonium","SPECIES":"californicum","COMNAME":"Showy Jacobs ladder"],["GENUS":"Chaenactis","SPECIES":"douglasii","COMNAME":"Douglas dustymaiden"],["GENUS":"Castilleja","SPECIES":"lineariloba","COMNAME":"Pale owls clover"],["GENUS":"Zigadenus","SPECIES":"venenosus","COMNAME":"Death camas"],["GENUS":"Arabis","SPECIES":"platysperma","COMNAME":"Broad-seeded rock-cress"],["GENUS":"Calyptridium","SPECIES":"monospermum","COMNAME":"One-seeded pussy paws"],["GENUS":"Streptanthus","SPECIES":"diversifolius","COMNAME":"Varied-leaved jewelflower"],["GENUS":"Lilium","SPECIES":"pardalinum","COMNAME":"Leopard lily"],["GENUS":"Lomatium","SPECIES":"torreyi","COMNAME":"Torreys lomatium"],["GENUS":"Penstemon","SPECIES":"davidsonii","COMNAME":"Alpine penstemon"],["GENUS":"Lithophragma","SPECIES":"affine","COMNAME":"Woodland star"],["GENUS":"Sphenosciadium","SPECIES":"capitellatum","COMNAME":"Rangers buttons"],["GENUS":"Geranium","SPECIES":"molle","COMNAME":"Doves-foot geranium"],["GENUS":"Gilia","SPECIES":"mediomontana","COMNAME":"Globe gilia"],["GENUS":"Dudleya","SPECIES":"cymosa","COMNAME":"Canyon dudleya"],["GENUS":"Smilacina","SPECIES":"racemosa","COMNAME":"Large false Solomons seal"],["GENUS":"Asarum","SPECIES":"hartwegii","COMNAME":"Hartwegs wild ginger"],["GENUS":"Lewisia","SPECIES":"glandulosa","COMNAME":"Alpine lewisia"],["GENUS":"Heracleum","SPECIES":"lanatum","COMNAME":"Cow parsnip"],["GENUS":"Gilia","SPECIES":"leptalea","COMNAME":"Bridges gilia"],["GENUS":"Rumex","SPECIES":"paucifolia","COMNAME":"Alpine sheep sorrel"],["GENUS":"Juncus","SPECIES":"nevadensis","COMNAME":"Sierra Nevada rush"],["GENUS":"Carex","SPECIES":"limosa","COMNAME":"Mud sedge"],["GENUS":"Draperia","SPECIES":"systyla","COMNAME":"Draperia"],["GENUS":"Asclepias","SPECIES":"speciosa","COMNAME":"Showy milkweed"],["GENUS":"Triphysaria","SPECIES":"eriantha","COMNAME":"Butter and eggs"],["GENUS":"Parvisedum","SPECIES":"pumilum","COMNAME":"Sierra stonecrop"],["GENUS":"Eriogonum","SPECIES":"incanum","COMNAME":"Hoary buckwheat"],["GENUS":"Angelica","SPECIES":"lineariloba","COMNAME":"Sierra angelica"],["GENUS":"Sarcodes","SPECIES":"sanguinea","COMNAME":"Snow plant"],["GENUS":"Erigeron","SPECIES":"algidus","COMNAME":"Sierra daisy"],["GENUS":"Aquilegia","SPECIES":"pubescens","COMNAME":"Alpine columbine"],["GENUS":"Arenaria","SPECIES":"kingii","COMNAME":"Kings sandwort"],["GENUS":"Eriophyllum","SPECIES":"lanatum","COMNAME":"Woolly sunflower"],["GENUS":"Orthilia","SPECIES":"secunda","COMNAME":"One-sided wintergreen"],["GENUS":"Phyllodoce","SPECIES":"breweri","COMNAME":"Red mountain heather"],["GENUS":"Phlox","SPECIES":"condensata","COMNAME":"Condensed phlox"],["GENUS":"Clarkia","SPECIES":"rhomboidea","COMNAME":"Diamond clarkia"],["GENUS":"Lupinus","SPECIES":"polyphyllus","COMNAME":"Large-leaved lupine"],["GENUS":"Penstemon","SPECIES":"parvulus","COMNAME":"Purple penstemon"],["GENUS":"Epilobium","SPECIES":"angustifolium","COMNAME":"Fireweed"],["GENUS":"Viola","SPECIES":"quercetorum","COMNAME":"Oak violet"],["GENUS":"Senecio","SPECIES":"hydrophilus","COMNAME":"Water groundsel"],["GENUS":"Hypericum","SPECIES":"anagalloides","COMNAME":"Tinkers penny"],["GENUS":"Mimulus","SPECIES":"bicolor","COMNAME":"Yellow-and-white monkeyflower"],["GENUS":"Ligusticum","SPECIES":"grayi","COMNAME":"Lovage"]
-//        ]
         //load flower data
         BloomAPI().getFlowerData(success: { (data) in
             print(data)
-//            for dict in dictArr {
-//                flowers.append(Flower(dict: dict))
-//            }
+            if let dictArr = data as? [Dictionary<String,Any>]
+            {
+                for dict in dictArr {
+                    self.flowers.append(Flower(dict: dict))
+                }
+                print(self.flowers.count)
+                
+                DispatchQueue.main.async {
+                    self.fillCellIsOpenArray()
+                    self.collectionView?.reloadData()
+                }
+            }
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -97,7 +104,6 @@ extension ViewController {
         //load feature data
         
         cache = NSCache()
-        
     }
     
     
@@ -159,11 +165,9 @@ extension ViewController {
 
 // MARK: UIScrollViewDelegate
 extension ViewController {
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         pageLabel.text = "\(currentIndex+1)/\(flowers.count)"
     }
-    
 }
 
 // MARK: UICollectionViewDataSource
@@ -205,6 +209,8 @@ extension ViewController {
             cell.customTitle.text = name
         }
         
+        print(index)
+        print(self.flowers.count)
         cell.cellIsOpen(cellsIsOpen[index], animated: false)
     }
     

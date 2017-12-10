@@ -12,7 +12,7 @@ import UIKit
 class BloomAPI {
     static let sharedInstance = BloomAPI()
 
-    func httpRequest(with url: URL, method: String, success: @escaping (Dictionary<String, Any>) -> (), failure: @escaping (Error) -> ()) {
+    func httpRequest(with url: URL, method: String, success: @escaping (Any) -> (), failure: @escaping (Error) -> ()) {
         print(url.absoluteString)
         var request = URLRequest(url: url)
         request.httpMethod = method
@@ -21,8 +21,11 @@ class BloomAPI {
                 do {
                     // Convert the data to JSON
                     print(data)
-                    let jsonSerialized = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]
-                    if let json = jsonSerialized {
+                    let jsonSerialized = try JSONSerialization.jsonObject(with: data, options: []) //as? [String : Any]
+                    if let json = jsonSerialized as? [String : Any] {
+                        success(json)
+                    }
+                    else if let json = jsonSerialized as? Array<Any> {
                         success(json)
                     }
                 }  catch {
@@ -36,7 +39,7 @@ class BloomAPI {
         return
     }
     
-    func getFlowerData(success: @escaping (Dictionary<String, Any>) -> (), failure: @escaping (Error) -> ()) {
+    func getFlowerData(success: @escaping (Any) -> (), failure: @escaping (Error) -> ()) {
         if let url = URL(string: Flower.modelEndPoint) {
             httpRequest(with: url, method: "GET", success: { (data) in
                 success(data)
@@ -48,7 +51,7 @@ class BloomAPI {
     
     
     
-    func imageSearch(query: String?, success: @escaping (Dictionary<String, Any>) -> (), failure: @escaping (Error) -> ()) {
+    func imageSearch(query: String?, success: @escaping (Any) -> (), failure: @escaping (Error) -> ()) {
         guard let query = query?.stringByAddingPercentEncodingForURLQueryValue() else{return}
         let stringURL = "\(Secrets.customSearchBaseURL)key=\(Secrets.googleAPIKey)&cx=\(Secrets.cx)&q=\(query)&searchType=image"
         
