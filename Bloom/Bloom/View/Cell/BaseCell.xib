@@ -177,6 +177,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="flower-default" width="512" height="501"/>
+        <image name="flower-default" width="2107" height="2107"/>
     </resources>
 </document>

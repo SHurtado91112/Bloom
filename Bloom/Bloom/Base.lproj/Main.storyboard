@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KxC-tq-4mA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -41,5 +41,40 @@
             </objects>
             <point key="canvasLocation" x="140" y="133.5832083958021"/>
         </scene>
+        <!--Splash View Controller-->
+        <scene sceneID="V5l-0c-6sQ">
+            <objects>
+                <viewController id="KxC-tq-4mA" customClass="SplashViewController" customModule="Bloom" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p1U-ll-TIu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flower-default" translatesAutoresizingMaskIntoConstraints="NO" id="Bbm-Co-67k">
+                                <rect key="frame" x="0.0" y="146" width="374" height="374"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="374" id="Kx6-bD-3AK"/>
+                                    <constraint firstAttribute="height" constant="374" id="ykd-Wd-yoi"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.85490196080000003" green="0.83921568629999999" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Bbm-Co-67k" firstAttribute="centerY" secondItem="p1U-ll-TIu" secondAttribute="centerY" id="0u5-RA-Uzg"/>
+                            <constraint firstItem="Bbm-Co-67k" firstAttribute="centerX" secondItem="p1U-ll-TIu" secondAttribute="centerX" id="k9q-45-Smc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HZ4-qJ-QOg"/>
+                    </view>
+                    <connections>
+                        <outlet property="flowerImageView" destination="Bbm-Co-67k" id="y3k-wY-xus"/>
+                        <segue destination="BYZ-38-t0r" kind="showDetail" identifier="splashSegue" action="showViewController:sender:" id="Kgb-a6-J4T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FWf-NI-zW9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-578.39999999999998" y="133.5832083958021"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="flower-default" width="2107" height="2107"/>
+    </resources>
 </document>

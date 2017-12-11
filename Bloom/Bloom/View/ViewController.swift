@@ -28,6 +28,7 @@ extension ViewController {
     override func viewDidLoad() {
         itemSize = CGSize(width: 256, height: 335)
         super.viewDidLoad()
+        self.view.alpha = 0.0
         
         //set up gradient
         gradient()
@@ -39,6 +40,13 @@ extension ViewController {
         registerCell()
         addGesture(to: collectionView!)
         configureNavBar()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration: 0.48) {
+            self.view.alpha = 1.0
+        }
     }
     
     override func viewWillLayoutSubviews() {
