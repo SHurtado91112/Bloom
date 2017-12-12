@@ -28,7 +28,7 @@ extension ViewController {
     override func viewDidLoad() {
         itemSize = CGSize(width: 256, height: 335)
         super.viewDidLoad()
-        self.view.alpha = 0.0
+        self.collectionView?.alpha = 0.0
         
         //set up gradient
         gradient()
@@ -45,8 +45,10 @@ extension ViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIView.animate(withDuration: 0.48) {
-            self.view.alpha = 1.0
+            self.collectionView?.alpha = 1.0
         }
+        
+        pageLabel.text = "\(currentIndex+1)/\(flowers.count)"
     }
     
     override func viewWillLayoutSubviews() {
@@ -126,11 +128,11 @@ extension ViewController {
         cellsIsOpen = Array(repeating: false, count: flowers.count)
     }
     
-//    fileprivate func getViewController() -> ExpandingTableViewController {
-//        let storyboard = UIStoryboard(storyboard: .Main)
-//        let toViewController: DemoTableViewController = storyboard.instantiateViewController()
-//        return toViewController
-//    }
+    fileprivate func getViewController() -> ExpandingTableViewController {
+        let storyboard = UIStoryboard(name: "main", bundle: nil)
+        guard let toViewController = storyboard.instantiateViewController(withIdentifier: "SightingTVC") as? SightingTableViewController else {return ExpandingTableViewController()}
+        return toViewController
+    }
     
     fileprivate func configureNavBar() {
         navigationItem.leftBarButtonItem?.image = navigationItem.leftBarButtonItem?.image!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
@@ -157,7 +159,7 @@ extension ViewController {
         guard let cell  = collectionView?.cellForItem(at: indexPath) as? BaseCell else { return }
         // double swipe Up transition
         if cell.isOpened == true && sender.direction == .up {
-//            pushToViewController(getViewController())
+            pushToViewController(getViewController())
             
 //            if let rightButton = navigationItem.rightBarButtonItem as? AnimatingBarButton {
 //                rightButton.animationSelected(true)
@@ -200,11 +202,13 @@ extension ViewController {
 //                print("dispatch")
 //                BloomAPI().imageSearch(query: flower.comName, success: { (dict) in
 //                    print("FROM CLOSURE")
+//                    guard let dict = dict as? Dictionary<String,Any> else{return}
 //                    if let items = dict["items"] as? NSArray, let first = items[0] as? NSDictionary {
 //                        if let link = first["link"] as? String, let url = URL(string: link) {
 //                            if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
 //                                cell.backgroundImageView.image = image
 //                                cache.setObject(image, forKey: (indexPath as NSIndexPath).row as AnyObject)
+//                                //change imageview aspect to fill if found
 //                            }
 //                        }
 //                    }
@@ -214,7 +218,7 @@ extension ViewController {
 //                })
 //            }
 //        }
-//
+
         if let name = flower.comName, let genus = flower.genus, let species = flower.species {
             cell.customTitle.text = name
             cell.genusLabel.text = genus
@@ -234,7 +238,7 @@ extension ViewController {
         if cell.isOpened == false {
             cell.cellIsOpen(true)
         } else {
-//            pushToViewController(getViewController())
+            pushToViewController(getViewController())
             
 //            if let rightButton = navigationItem.rightBarButtonItem as? AnimatingBarButton {
 //                rightButton.animationSelected(true)

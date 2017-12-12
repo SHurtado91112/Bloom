@@ -91,6 +91,7 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swipe_up" translatesAutoresizingMaskIntoConstraints="NO" id="tJj-z2-2G2">
                                         <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                        <color key="tintColor" red="0.77611333938112947" green="0.76802882542924278" blue="0.76802882542924278" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" staticText="YES"/>
                                             <bool key="isElement" value="YES"/>
