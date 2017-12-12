@@ -166,6 +166,8 @@ extension ViewController {
         
         let open = sender.direction == .up ? true : false
         cell.cellIsOpen(open)
+        cell.changeSwipeImage(open: open)
+        
         cellsIsOpen[indexPath.row] = cell.isOpened
     }
     
@@ -213,13 +215,16 @@ extension ViewController {
 //            }
 //        }
 //
-        if let name = flower.comName {
+        if let name = flower.comName, let genus = flower.genus, let species = flower.species {
             cell.customTitle.text = name
+            cell.genusLabel.text = genus
+            cell.speciesLabel.text = species
         }
         
         print(index)
         print(self.flowers.count)
         cell.cellIsOpen(cellsIsOpen[index], animated: false)
+        cell.changeSwipeImage(open: cellsIsOpen[index])
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: IndexPath) {

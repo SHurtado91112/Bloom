@@ -13,14 +13,15 @@ class Flower : NSObject {
     var genus : String?
     var species : String?
     var comName : String?
+    var sightings : [Sighting]?
     
-    static let modelEndPoint = "http://renzojrodriguez.com/service.php"
+    static let allFlowersEndPoint = "getAllFlowers"
     
     init(dict: Dictionary<String, Any>) {
         print(dict)
         genus = dict["GENUS"] as? String
         species = dict["SPECIES"] as? String
-        comName = dict ["COMNAME"] as? String
+        comName = dict ["NAME"] as? String
         print("\(genus)\n\(species)\n\(comName)")
     }
 }

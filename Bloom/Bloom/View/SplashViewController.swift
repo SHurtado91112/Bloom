@@ -20,16 +20,16 @@ class SplashViewController: UIViewController {
     }
     
     func animateFlower() {
-        UIView.setAnimationCurve(.easeInOut)
-        UIView.animate(withDuration: 0.48, animations: {
+        UIView.setAnimationCurve(.easeIn)
+        UIView.animate(withDuration: 0.24, animations: {
             self.flowerImageView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/4)
         }) { (end) in
-            UIView.setAnimationCurve(.easeInOut)
+            UIView.setAnimationCurve(.linear)
             UIView.animate(withDuration: 0.24, animations: {
                 self.flowerImageView.transform = CGAffineTransform.identity
             }, completion: { (end2) in
                 UIView.setAnimationCurve(.linear)
-                UIView.animate(withDuration: 0.48, animations: {
+                UIView.animate(withDuration: 0.64, animations: {
                     self.flowerImageView.transform = CGAffineTransform(rotationAngle: -1 * (180.0*CGFloat.pi*0.999)/180.0)
                     self.flowerImageView.alpha = 0.0
                 }, completion: { (end3) in

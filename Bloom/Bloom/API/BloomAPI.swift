@@ -40,7 +40,7 @@ class BloomAPI {
     }
     
     func getFlowerData(success: @escaping (Any) -> (), failure: @escaping (Error) -> ()) {
-        if let url = URL(string: Flower.modelEndPoint) {
+        if let url = URL(string: "\(Secrets.apiBaseURL)/\(Flower.allFlowersEndPoint)") {
             httpRequest(with: url, method: "GET", success: { (data) in
                 success(data)
             }, failure: { (error) in
@@ -49,7 +49,15 @@ class BloomAPI {
         }
     }
     
-    
+    func getSightingData(flowerName: String, success: @escaping (Any) -> (), failure: @escaping (Error) -> ()) {
+        if let url = URL(string: "\(Secrets.apiBaseURL)/\(Sighting.oneFlowerEndPoint)/\(flowerName)") {
+            httpRequest(with: url, method: "GET", success: { (data) in
+                success(data)
+            }, failure: { (error) in
+                failure(error)
+            })
+        }
+    }
     
     func imageSearch(query: String?, success: @escaping (Any) -> (), failure: @escaping (Error) -> ()) {
         guard let query = query?.stringByAddingPercentEncodingForURLQueryValue() else{return}

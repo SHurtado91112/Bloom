@@ -15,6 +15,10 @@ class Sighting : NSObject {
     var location : String?
     var sighted : String?
     
+    static let oneFlowerEndPoint = "getOneFlower/" //{flowerName}"
+    static let updateSightingEndPoint = "" //
+    static let iSightingEndPoint = "" //
+    
     init(dict: Dictionary<String, Any>) {
         name = dict["NAME"] as? String
         person = dict["PERSON"] as? String
