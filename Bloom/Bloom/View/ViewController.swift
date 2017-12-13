@@ -8,15 +8,18 @@
 
 import UIKit
 import expanding_collection
+import QuartzCore
 
 class ViewController: ExpandingViewController {
     fileprivate var cellsIsOpen = [Bool]()
     fileprivate var flowers: [Flower] = []
     fileprivate var cache : NSCache<AnyObject, AnyObject>?
+    var stopLoading = Timer()
     
     @IBOutlet weak var titleImageViewXConstraint: NSLayoutConstraint!
     @IBOutlet weak var pageLabel : UILabel!
     
+    @IBOutlet weak var loader: UIImageView!
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -88,29 +91,54 @@ extension ViewController {
 //
 //}
 
+// MARK: CAANIMATION DELEGATE
+extension ViewController: CAAnimationDelegate {
+    fileprivate func loadLoader() {
+        stopLoading = Timer.scheduledTimer(timeInterval: 0.98, target: self, selector: #selector(keepLoading), userInfo: nil, repeats: true)
+        stopLoading.fire()
+    }
+    
+    @objc func keepLoading() {
+        
+        let fullRotation = CABasicAnimation(keyPath: "transform.rotation")
+        fullRotation.delegate = self
+        fullRotation.fromValue = NSNumber(floatLiteral: 0)
+        fullRotation.toValue = NSNumber(floatLiteral: Double(CGFloat.pi * -2))
+        fullRotation.duration = 0.96
+        fullRotation.repeatCount = 1
+        self.loader.layer.add(fullRotation, forKey: "360")
+    }
+    
+    fileprivate func stopLoader() {
+        stopLoading.invalidate()
+    }
+}
+
 // MARK: Helpers
 extension ViewController {
     
     fileprivate func loadData() {
-        //load flower data
-        BloomAPI().getFlowerData(success: { (data) in
-//            print(data)
-            if let dictArr = data as? [Dictionary<String,Any>]
-            {
-                for dict in dictArr {
-                    self.flowers.append(Flower(dict: dict))
-                }
-                print(self.flowers.count)
-                
-                DispatchQueue.main.async {
-                    self.fillCellIsOpenArray()
-                    self.collectionView?.reloadData()
-                }
-            }
-        }) { (error) in
-            print(error.localizedDescription)
-        }
+        loadLoader()
         
+        //load flower data
+//        BloomAPI().getFlowerData(success: { (data) in
+//            self.stopLoader()
+//            if let dictArr = data as? [Dictionary<String,Any>]
+//            {
+//                for dict in dictArr {
+//                    self.flowers.append(Flower(dict: dict))
+//                }
+//
+//                DispatchQueue.main.async {
+//                    self.fillCellIsOpenArray()
+//                    self.collectionView?.reloadData()
+//                    self.pageLabel.text = "\(self.currentIndex+1)/\(self.flowers.count)"
+//                }
+//            }
+//        }) { (error) in
+//            print(error.localizedDescription)
+//        }
+//
         //load sighting data
         
         //load feature data

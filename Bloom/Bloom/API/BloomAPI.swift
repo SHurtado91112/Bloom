@@ -81,7 +81,25 @@ class BloomAPI {
         } catch {
             print("Error parsing JSON.")
         }
+    }
+    
+    func updateSightingData(sighting: Sighting, json: Dictionary<String, Any>, success: @escaping (Any) -> (), failure: @escaping (Error) -> ()) {
+//        let key = sighting.
         
+        do {
+            let data = try JSONSerialization.data(withJSONObject: json)
+            if let param = String(data: data, encoding: .utf8) {
+                if let url = URL(string: "\(Secrets.apiBaseURL)/\(Sighting.insertSightingEndPoint)") {
+                    httpRequest(with: url, method: "POST", param: param, success: { (data) in
+                        success(data)
+                    }, failure: { (error) in
+                        failure(error)
+                    })
+                }
+            }
+        } catch {
+            print("Error parsing JSON.")
+        }
     }
     
     func imageSearch(query: String?, success: @escaping (Any) -> (), failure: @escaping (Error) -> ()) {

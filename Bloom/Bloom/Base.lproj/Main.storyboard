@@ -24,17 +24,27 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flower-default" translatesAutoresizingMaskIntoConstraints="NO" id="qUP-ZJ-iZM">
+                                <rect key="frame" x="137" y="283" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="XKG-Nz-xUy"/>
+                                    <constraint firstAttribute="height" constant="100" id="ejC-JB-rbP"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="qUP-ZJ-iZM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Oh8-TJ-VSK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BK8-qF-OEl" secondAttribute="trailing" constant="16" id="lvU-nq-rRX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BK8-qF-OEl" secondAttribute="bottom" constant="20" id="qBO-4p-qji"/>
+                            <constraint firstItem="qUP-ZJ-iZM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="y0p-J3-7wX"/>
                             <constraint firstItem="BK8-qF-OEl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ymR-dd-SVT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Bloom Database" id="MRk-OG-fFt"/>
                     <connections>
+                        <outlet property="loader" destination="qUP-ZJ-iZM" id="dGW-bg-GNN"/>
                         <outlet property="pageLabel" destination="BK8-qF-OEl" id="Ie9-VC-6bC"/>
                         <segue destination="vsU-pt-OxM" kind="show" id="17q-Cd-IwD"/>
                     </connections>
@@ -199,10 +209,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.77611333940000005" green="0.76802882539999995" blue="0.76802882539999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.97647058823529409" green="0.44313725490196076" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.97741213530000004" green="0.44346740499999998" blue="0.78729352730000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
