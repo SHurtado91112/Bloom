@@ -15,7 +15,7 @@ class Sighting : NSObject {
     var sighted : String?
     
     static let oneFlowerEndPoint = "getOneFlower/" //{flowerName}"
-    static let updateSightingEndPoint = "updateFlower/" //{flowerName}
+    static let updateSightingEndPoint = "updateFlower"
     static let insertSightingEndPoint = "insertFlower"
     
     init(dict: Dictionary<String, Any>) {

@@ -19,6 +19,7 @@
 		2838F2231FE0653000151FDF /* SightingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2838F2221FE0653000151FDF /* SightingTableViewController.swift */; };
 		2838F2261FE0C0DF00151FDF /* HeaderSightingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2838F2251FE0C0DF00151FDF /* HeaderSightingCell.swift */; };
 		2838F2281FE0C37200151FDF /* SightingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2838F2271FE0C37200151FDF /* SightingCell.swift */; };
+		2838F22A1FE191B300151FDF /* SightingManageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2838F2291FE191B300151FDF /* SightingManageTableViewController.swift */; };
 		28CD85EC1FD9EB1000E10EE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CD85EB1FD9EB1000E10EE2 /* AppDelegate.swift */; };
 		28CD85EE1FD9EB1000E10EE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CD85ED1FD9EB1000E10EE2 /* ViewController.swift */; };
 		28CD85F11FD9EB1000E10EE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28CD85EF1FD9EB1000E10EE2 /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 		2838F2221FE0653000151FDF /* SightingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightingTableViewController.swift; sourceTree = "<group>"; };
 		2838F2251FE0C0DF00151FDF /* HeaderSightingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSightingCell.swift; sourceTree = "<group>"; };
 		2838F2271FE0C37200151FDF /* SightingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightingCell.swift; sourceTree = "<group>"; };
+		2838F2291FE191B300151FDF /* SightingManageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightingManageTableViewController.swift; sourceTree = "<group>"; };
 		28CD85E81FD9EB1000E10EE2 /* Bloom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bloom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28CD85EB1FD9EB1000E10EE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28CD85ED1FD9EB1000E10EE2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				2838F2221FE0653000151FDF /* SightingTableViewController.swift */,
+				2838F2291FE191B300151FDF /* SightingManageTableViewController.swift */,
 				2838F2241FE0C0CA00151FDF /* Cell */,
 			);
 			path = TableViewController;
@@ -315,6 +318,7 @@
 				2838F2111FDB528900151FDF /* Flower.swift in Sources */,
 				2838F20E1FDA064F00151FDF /* Util.swift in Sources */,
 				2838F2091FD9FA9000151FDF /* BaseCell.swift in Sources */,
+				2838F22A1FE191B300151FDF /* SightingManageTableViewController.swift in Sources */,
 				2838F2151FDB529C00151FDF /* Sighting.swift in Sources */,
 				2838F2231FE0653000151FDF /* SightingTableViewController.swift in Sources */,
 				2838F2281FE0C37200151FDF /* SightingCell.swift in Sources */,

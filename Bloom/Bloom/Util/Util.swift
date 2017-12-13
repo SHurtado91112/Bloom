@@ -57,6 +57,56 @@ extension String {
     }
 }
 
+extension UIImage{
+    
+    class func imageFromSystemBarButton(_ systemItem: UIBarButtonSystemItem, renderingMode:UIImageRenderingMode = .automatic)-> UIImage {
+        
+        let tempItem = UIBarButtonItem(barButtonSystemItem: systemItem, target: nil, action: nil)
+        
+        // add to toolbar and render it
+        UIToolbar().setItems([tempItem], animated: false)
+        
+        // got image from real uibutton
+        guard let itemView = tempItem.value(forKey: "view") as? UIView else{return UIImage()}
+        
+        for view in itemView.subviews {
+            if view is UIButton {
+                let button = view as! UIButton
+                let image = button.imageView!.image!
+                image.withRenderingMode(renderingMode)
+                return image
+            }
+        }
+        
+        return UIImage()
+    }
+}
+
+extension UIBarButtonSystemItem {
+    func image() -> UIImage? {
+        let tempItem = UIBarButtonItem(barButtonSystemItem: self,
+                                       target: nil,
+                                       action: nil)
+        
+        // add to toolbar and render it
+        let bar = UIToolbar()
+        bar.setItems([tempItem],
+                     animated: false)
+        bar.snapshotView(afterScreenUpdates: true)
+        
+        // got image from real uibutton
+        guard let itemView = tempItem.value(forKey: "view") as? UIView else{return nil}
+        for view in itemView.subviews {
+            if let button = view as? UIButton,
+                let image = button.imageView?.image {
+                return image.withRenderingMode(.alwaysTemplate)
+            }
+        }
+        
+        return nil
+    }
+}
+
 extension UIColor
 {
     //Miya colors

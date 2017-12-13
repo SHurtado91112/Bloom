@@ -60,6 +60,9 @@ extension SightingTableViewController {
                 cell.locationLabel.text = "Location: \t\(location)"
             }
 
+            cell.editBtn.tag = indexPath.row
+            cell.editBtn.addTarget(self, action: #selector(updateSighting(_:)), for: .touchUpInside)
+            
             return cell
         }
         
@@ -72,6 +75,8 @@ extension SightingTableViewController {
     fileprivate func configureNavBar() {
         navigationItem.leftBarButtonItem?.image = navigationItem.leftBarButtonItem?.image!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(backButtonHandler(_:)))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewSighting(_:)))
     }
     
     fileprivate func configureHeader() {
@@ -105,6 +110,59 @@ extension SightingTableViewController {
     @objc func backButtonHandler(_ sender: AnyObject) {
         // buttonAnimation
         popTransitionAnimation()
+    }
+    
+    @objc func addNewSighting(_ sender: AnyObject) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "SightingManageView") as? UINavigationController {
+            vc.modalPresentationStyle = .overCurrentContext
+            
+            if let top = vc.topViewController as? SightingManageTableViewController, let name = flower.comName {
+                top.flowerName = name
+                top.delegate = self
+                self.present(vc, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    @objc func updateSighting(_ sender: AnyObject) {
+        guard let btn = sender as? UIButton else {return}
+        let tag = btn.tag
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "SightingManageView") as? UINavigationController {
+            vc.modalPresentationStyle = .overCurrentContext
+            
+            if let top = vc.topViewController as? SightingManageTableViewController, let name = flower.comName {
+                top.flowerName = name
+                top.isUpdate = true
+                top.index = tag
+                top.oldSighting = self.flower.sightings[tag]
+                top.delegate = self
+                self.present(vc, animated: true, completion: nil)
+            }
+        }
+    }
+}
+
+extension SightingTableViewController : SightingManageDelegate {
+    func insertFlowerList(data: Dictionary<String, Any>) {
+        self.flower.sightings.append(Sighting(dict: data))
+        
+        let bottomOffset = CGPoint(x: 0, y: self.tableView.contentSize.height - self.tableView.bounds.size.height)
+        tableView.setContentOffset(bottomOffset, animated: true)
+        
+        self.tableView.reloadData()
+    }
+    
+    func updateFlowerList(data: Dictionary<String, Any>, index: Int) {
+        print(self.flower.sightings[index])
+        self.flower.sightings[index] = Sighting(dict: data)
+        print(self.flower.sightings[index])
+        
+        let indexPath = IndexPath(row: index, section: 0)
+        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        
+        self.tableView.reloadData()
     }
 }
 

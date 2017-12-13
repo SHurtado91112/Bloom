@@ -49,9 +49,6 @@ extension ViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UIView.animate(withDuration: 0.48) {
-            self.collectionView?.alpha = 1.0
-        }
         
         pageLabel.text = "\(currentIndex+1)/\(flowers.count)"
     }
@@ -121,24 +118,27 @@ extension ViewController {
         loadLoader()
         
         //load flower data
-//        BloomAPI().getFlowerData(success: { (data) in
-//            self.stopLoader()
-//            if let dictArr = data as? [Dictionary<String,Any>]
-//            {
-//                for dict in dictArr {
-//                    self.flowers.append(Flower(dict: dict))
-//                }
-//
-//                DispatchQueue.main.async {
-//                    self.fillCellIsOpenArray()
-//                    self.collectionView?.reloadData()
-//                    self.pageLabel.text = "\(self.currentIndex+1)/\(self.flowers.count)"
-//                }
-//            }
-//        }) { (error) in
-//            print(error.localizedDescription)
-//        }
-//
+        BloomAPI().getFlowerData(success: { (data) in
+            self.stopLoader()
+            if let dictArr = data as? [Dictionary<String,Any>]
+            {
+                for dict in dictArr {
+                    self.flowers.append(Flower(dict: dict))
+                }
+
+                DispatchQueue.main.async {
+                    self.fillCellIsOpenArray()
+                    self.collectionView?.reloadData()
+                    self.pageLabel.text = "\(self.currentIndex+1)/\(self.flowers.count)"
+                    UIView.animate(withDuration: 0.48) {
+                        self.collectionView?.alpha = 1.0
+                    }
+                }
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+
         //load sighting data
         
         //load feature data

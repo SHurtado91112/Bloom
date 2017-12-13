@@ -15,10 +15,12 @@ class SightingCell: UITableViewCell {
     @IBOutlet weak var personLabel: UILabel!
     @IBOutlet weak var foundLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var editBtn: UIButton!
+    
+    var indexPath : IndexPath!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
 }
 

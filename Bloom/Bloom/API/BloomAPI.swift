@@ -12,18 +12,30 @@ import UIKit
 class BloomAPI {
     static let sharedInstance = BloomAPI()
 
-    func httpRequest(with url: URL, method: String, param: String, success: @escaping (Any) -> (), failure: @escaping (Error) -> ()) {
+    func httpRequest(with url: URL, method: String, param: Data, success: @escaping (Any) -> (), failure: @escaping (Error) -> ()) {
         print(url.absoluteString)
         var request = URLRequest(url: url)
         request.httpMethod = method
         
-        if(method == "POST") {
-            request.httpBody = param.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
+        if(method == "POST" || method == "PUT") {
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+            request.httpBody = param
         }
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
             if let data = data {
                 do {
+                    
+                    if(method == "POST" || method == "PUT")  {
+                        if let error = error {
+                            failure(error)
+                        }
+                        else {
+                            print(response)
+                            success(data)
+                        }
+                    }
                     // Convert the data to JSON
                     print(data)
                     let jsonSerialized = try JSONSerialization.jsonObject(with: data, options: []) //as? [String : Any]
@@ -46,7 +58,7 @@ class BloomAPI {
     
     func getFlowerData(success: @escaping (Any) -> (), failure: @escaping (Error) -> ()) {
         if let url = URL(string: "\(Secrets.apiBaseURL)/\(Flower.allFlowersEndPoint)") {
-            httpRequest(with: url, method: "GET", param: "", success: { (data) in
+            httpRequest(with: url, method: "GET", param: Data(), success: { (data) in
                 success(data)
             }, failure: { (error) in
                 failure(error)
@@ -57,7 +69,7 @@ class BloomAPI {
     func getSightingData(flowerName: String, success: @escaping (Any) -> (), failure: @escaping (Error) -> ()) {
         guard let flowerName = flowerName.stringByAddingPercentEncodingForURLQueryValue() else{return}
         if let url = URL(string: "\(Secrets.apiBaseURL)/\(Sighting.oneFlowerEndPoint)\(flowerName)") {
-            httpRequest(with: url, method: "GET", param: "", success: { (data) in
+            httpRequest(with: url, method: "GET", param: Data(), success: { (data) in
                 success(data)
             }, failure: { (error) in
                 failure(error)
@@ -65,37 +77,31 @@ class BloomAPI {
         }
     }
     
-    func insertSightingData(flowerName: String, json: Dictionary<String, Any>, success: @escaping (Any) -> (), failure: @escaping (Error) -> ()) {
+    func insertSightingData(json: String, success: @escaping (Any) -> (), failure: @escaping (Error) -> ()) {
         
         do {
-            let data = try JSONSerialization.data(withJSONObject: json)
-            if let param = String(data: data, encoding: .utf8) {
-                if let url = URL(string: "\(Secrets.apiBaseURL)/\(Sighting.insertSightingEndPoint)") {
-                    httpRequest(with: url, method: "POST", param: param, success: { (data) in
-                        success(data)
-                    }, failure: { (error) in
-                        failure(error)
-                    })
-                }
+            guard let data = json.data(using: String.Encoding.utf8, allowLossyConversion: true) else{return}
+            if let url = URL(string: "\(Secrets.apiBaseURL)/\(Sighting.insertSightingEndPoint)") {
+                httpRequest(with: url, method: "POST", param: data, success: { (data) in
+                    success(data)
+                }, failure: { (error) in
+                    failure(error)
+                })
             }
         } catch {
             print("Error parsing JSON.")
         }
     }
     
-    func updateSightingData(sighting: Sighting, json: Dictionary<String, Any>, success: @escaping (Any) -> (), failure: @escaping (Error) -> ()) {
-//        let key = sighting.
-        
+    func updateSightingData(json: String, success: @escaping (Any) -> (), failure: @escaping (Error) -> ()) {
         do {
-            let data = try JSONSerialization.data(withJSONObject: json)
-            if let param = String(data: data, encoding: .utf8) {
-                if let url = URL(string: "\(Secrets.apiBaseURL)/\(Sighting.insertSightingEndPoint)") {
-                    httpRequest(with: url, method: "POST", param: param, success: { (data) in
-                        success(data)
-                    }, failure: { (error) in
-                        failure(error)
-                    })
-                }
+            guard let data = json.data(using: String.Encoding.utf8, allowLossyConversion: true) else{return}
+            if let url = URL(string: "\(Secrets.apiBaseURL)/\(Sighting.updateSightingEndPoint)") {
+                httpRequest(with: url, method: "PUT", param: data, success: { (data) in
+                    success(data)
+                }, failure: { (error) in
+                    failure(error)
+                })
             }
         } catch {
             print("Error parsing JSON.")
@@ -107,7 +113,7 @@ class BloomAPI {
         let stringURL = "\(Secrets.customSearchBaseURL)key=\(Secrets.googleAPIKey)&cx=\(Secrets.cx)&q=\(query)&searchType=image"
         
         if let url = URL(string: stringURL) {
-            httpRequest(with: url, method: "GET", param: "", success: { (data) in
+            httpRequest(with: url, method: "GET", param: Data(), success: { (data) in
                 success(data)
             }) { (error) in
                 failure(error)
