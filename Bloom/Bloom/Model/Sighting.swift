@@ -10,17 +10,16 @@ import Foundation
 
 class Sighting : NSObject {
     //initialization
-    var name : String?
     var person : String?
     var location : String?
     var sighted : String?
     
     static let oneFlowerEndPoint = "getOneFlower/" //{flowerName}"
-    static let updateSightingEndPoint = "" //
-    static let iSightingEndPoint = "" //
+    static let updateSightingEndPoint = "updateFlower/" //{flowerName}
+    static let insertSightingEndPoint = "insertFlower"
     
     init(dict: Dictionary<String, Any>) {
-        name = dict["NAME"] as? String
+//        name = dict["NAME"] as? String
         person = dict["PERSON"] as? String
         location = dict ["LOCATION"] as? String
         sighted = dict ["SIGHTED"] as? String

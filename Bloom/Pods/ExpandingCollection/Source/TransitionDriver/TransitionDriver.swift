@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TransitionDriver {
+open class TransitionDriver {
   
   // MARK: Constants
   struct Constants {

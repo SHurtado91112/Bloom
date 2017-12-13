@@ -15,7 +15,7 @@ open class ExpandingTableViewController: UITableViewController {
   /// The height of the table view header
   open var headerHeight: CGFloat = 236
   
-  var transitionDriver: TransitionDriver?
+  open var transitionDriver: TransitionDriver?
 }
 
 // MARK: Helpers 
@@ -55,6 +55,7 @@ extension ExpandingTableViewController {
     }
     
     let backImage = getScreen()
+    
     var offset = tableView.contentOffset.y > headerHeight ? headerHeight : tableView.contentOffset.y
     
     offset += getTabBarHeight()

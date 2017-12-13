@@ -6,12 +6,11 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Bloom Database-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Bloom" customModuleProvider="target" sceneMemberID="viewController">
@@ -34,7 +33,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="MRk-OG-fFt"/>
+                    <navigationItem key="navigationItem" title="Bloom Database" id="MRk-OG-fFt"/>
                     <connections>
                         <outlet property="pageLabel" destination="BK8-qF-OEl" id="Ie9-VC-6bC"/>
                         <segue destination="vsU-pt-OxM" kind="show" id="17q-Cd-IwD"/>
@@ -53,36 +52,45 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderSightingCell" rowHeight="124" id="Sbk-Z0-ybv">
-                                <rect key="frame" x="0.0" y="28" width="375" height="124"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderSightingCell" rowHeight="88" id="Sbk-Z0-ybv" customClass="HeaderSightingCell" customModule="Bloom" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sbk-Z0-ybv" id="zzy-Ju-m7i">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="123.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="87.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flower-default" translatesAutoresizingMaskIntoConstraints="NO" id="hmp-0d-KKW">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="124"/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="La Crescenta-Montrose, CA91020 Glendale NO. 7911847" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMV-BJ-rBk">
-                                            <rect key="frame" x="40" y="49" width="319" height="26.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" red="0.49803921569999998" green="0.51764705879999995" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <rect key="frame" x="8" y="8" width="351" height="33.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="La Crescenta-Montrose, CA91020 Glendale NO. 7911847" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDW-pj-8yd">
+                                            <rect key="frame" x="8" y="49" width="351" height="30.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="vMV-BJ-rBk" firstAttribute="leading" secondItem="zzy-Ju-m7i" secondAttribute="leading" constant="40" id="1wo-EC-4Lv"/>
-                                        <constraint firstItem="hmp-0d-KKW" firstAttribute="top" secondItem="zzy-Ju-m7i" secondAttribute="top" id="HL7-Rn-I5c"/>
-                                        <constraint firstItem="vMV-BJ-rBk" firstAttribute="centerY" secondItem="zzy-Ju-m7i" secondAttribute="centerY" id="Knu-Pw-3zj"/>
-                                        <constraint firstAttribute="trailing" secondItem="hmp-0d-KKW" secondAttribute="trailing" id="N2K-Yr-WVA"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="vMV-BJ-rBk" secondAttribute="trailing" id="gR9-ML-A9y"/>
-                                        <constraint firstItem="hmp-0d-KKW" firstAttribute="leading" secondItem="zzy-Ju-m7i" secondAttribute="leading" id="lpT-9b-AOO"/>
-                                        <constraint firstAttribute="bottom" secondItem="hmp-0d-KKW" secondAttribute="bottom" id="xYk-Hz-ZLK"/>
+                                        <constraint firstItem="vMV-BJ-rBk" firstAttribute="top" secondItem="zzy-Ju-m7i" secondAttribute="top" constant="8" id="GkU-8T-Qen"/>
+                                        <constraint firstItem="aDW-pj-8yd" firstAttribute="top" secondItem="vMV-BJ-rBk" secondAttribute="bottom" constant="8" id="IaR-9u-Lxa"/>
+                                        <constraint firstAttribute="trailing" secondItem="aDW-pj-8yd" secondAttribute="trailing" constant="16" id="KWn-vf-GNp"/>
+                                        <constraint firstItem="aDW-pj-8yd" firstAttribute="top" secondItem="vMV-BJ-rBk" secondAttribute="bottom" constant="8" id="UIT-ru-BYy"/>
+                                        <constraint firstItem="vMV-BJ-rBk" firstAttribute="leading" secondItem="zzy-Ju-m7i" secondAttribute="leading" constant="8" id="gLv-X0-sSa"/>
+                                        <constraint firstAttribute="trailing" secondItem="vMV-BJ-rBk" secondAttribute="trailing" constant="16" id="gcZ-7C-SLt"/>
+                                        <constraint firstAttribute="bottom" secondItem="aDW-pj-8yd" secondAttribute="bottom" constant="8" id="pBg-Vn-QbX"/>
+                                        <constraint firstItem="aDW-pj-8yd" firstAttribute="leading" secondItem="zzy-Ju-m7i" secondAttribute="leading" constant="8" id="sSd-Ic-PjB"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.77611333940000005" green="0.76802882539999995" blue="0.76802882539999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="latinLabel" destination="vMV-BJ-rBk" id="4ZI-93-gLY"/>
+                                    <outlet property="sightingCountLabel" destination="aDW-pj-8yd" id="alq-zR-o1S"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SightingCell" rowHeight="130" id="Sb7-8G-Uue">
-                                <rect key="frame" x="0.0" y="152" width="375" height="130"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SightingCell" rowHeight="130" id="Sb7-8G-Uue" customClass="SightingCell" customModule="Bloom" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="116" width="375" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sb7-8G-Uue" id="7OJ-2Z-7FF">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="129.5"/>
@@ -95,14 +103,14 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="295" height="40"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Peter Allan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upt-9R-7WW">
-                                                            <rect key="frame" x="0.0" y="11" width="242" height="18"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <rect key="frame" x="0.0" y="8.5" width="227.5" height="23"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                             <color key="textColor" red="0.41960784309999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FEB 14th" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aH2-uz-bfR">
-                                                            <rect key="frame" x="252" y="14" width="43" height="12"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <rect key="frame" x="237.5" y="11.5" width="57.5" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -114,7 +122,7 @@
                                                         <constraint firstAttribute="height" constant="60" id="kfA-81-idb"/>
                                                     </constraints>
                                                     <string key="text">The federal beach atc requires states that receive funding to develop a risk-based beach evaluation and classification plan and apply it to</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.4431372549" green="0.4431372549" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -132,6 +140,11 @@
                                         <constraint firstItem="xrt-sI-dYo" firstAttribute="top" secondItem="7OJ-2Z-7FF" secondAttribute="top" constant="15" id="vFW-si-39D"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="foundLabel" destination="aH2-uz-bfR" id="w7l-a3-5U0"/>
+                                    <outlet property="locationLabel" destination="qAy-aE-6zr" id="Huh-jA-efG"/>
+                                    <outlet property="personLabel" destination="upt-9R-7WW" id="QOh-IM-nSF"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -142,7 +155,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gCO-YI-dW1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1702" y="134"/>
+            <point key="canvasLocation" x="1701.5999999999999" y="133.5832083958021"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="V5l-0c-6sQ">
@@ -185,6 +198,12 @@
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.77611333940000005" green="0.76802882539999995" blue="0.76802882539999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

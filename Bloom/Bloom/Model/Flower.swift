@@ -13,7 +13,7 @@ class Flower : NSObject {
     var genus : String?
     var species : String?
     var comName : String?
-    var sightings : [Sighting]?
+    var sightings : [Sighting] = []
     
     static let allFlowersEndPoint = "getAllFlowers"
     

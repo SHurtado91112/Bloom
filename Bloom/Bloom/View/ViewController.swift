@@ -14,6 +14,7 @@ class ViewController: ExpandingViewController {
     fileprivate var flowers: [Flower] = []
     fileprivate var cache : NSCache<AnyObject, AnyObject>?
     
+    @IBOutlet weak var titleImageViewXConstraint: NSLayoutConstraint!
     @IBOutlet weak var pageLabel : UILabel!
     
     override func didReceiveMemoryWarning() {
@@ -29,6 +30,7 @@ extension ViewController {
         itemSize = CGSize(width: 256, height: 335)
         super.viewDidLoad()
         self.collectionView?.alpha = 0.0
+        self.title = "Bloom"
         
         //set up gradient
         gradient()
@@ -53,10 +55,10 @@ extension ViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-//        guard let titleView = navigationItem.titleView else { return }
-//        let center = UIScreen.main.bounds.midX
-//        let diff = center - titleView.frame.midX
-//        titleImageViewXConstraint.constant = diff
+        guard let titleView = navigationItem.titleView else { return }
+        let center = UIScreen.main.bounds.midX
+        let diff = center - titleView.frame.midX
+        titleImageViewXConstraint.constant = diff
     }
     
     func gradient() {
@@ -92,7 +94,7 @@ extension ViewController {
     fileprivate func loadData() {
         //load flower data
         BloomAPI().getFlowerData(success: { (data) in
-            print(data)
+//            print(data)
             if let dictArr = data as? [Dictionary<String,Any>]
             {
                 for dict in dictArr {
@@ -129,13 +131,22 @@ extension ViewController {
     }
     
     fileprivate func getViewController() -> ExpandingTableViewController {
-        let storyboard = UIStoryboard(name: "main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let toViewController = storyboard.instantiateViewController(withIdentifier: "SightingTVC") as? SightingTableViewController else {return ExpandingTableViewController()}
+        
+        if let name = flowers[currentIndex].comName {
+            toViewController.title = name
+            toViewController.flower = flowers[currentIndex]
+        }
         return toViewController
     }
     
     fileprivate func configureNavBar() {
         navigationItem.leftBarButtonItem?.image = navigationItem.leftBarButtonItem?.image!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        guard let superView = navigationItem.titleView?.superview else {return}
+        guard let first = navigationItem.titleView else {return}
+        titleImageViewXConstraint = NSLayoutConstraint(item: first, attribute: NSLayoutAttribute.centerX, relatedBy: .equal, toItem: superView, attribute: .centerX, multiplier: 1.0, constant: 0.0)
+        navigationItem.titleView?.addConstraint(titleImageViewXConstraint)
     }
     
 }
@@ -150,27 +161,75 @@ extension ViewController {
         let downGesture = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.swipeHandler(_:)))
         downGesture.direction = .down
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.backOpened))
+        
         view.addGestureRecognizer(upGesture)
         view.addGestureRecognizer(downGesture)
+        view.addGestureRecognizer(tapGesture)
     }
     
     @objc func swipeHandler(_ sender: UISwipeGestureRecognizer) {
         let indexPath = IndexPath(row: currentIndex, section: 0)
         guard let cell  = collectionView?.cellForItem(at: indexPath) as? BaseCell else { return }
-        // double swipe Up transition
-        if cell.isOpened == true && sender.direction == .up {
-            pushToViewController(getViewController())
-            
-//            if let rightButton = navigationItem.rightBarButtonItem as? AnimatingBarButton {
-//                rightButton.animationSelected(true)
-//            }
-        }
-        
+
         let open = sender.direction == .up ? true : false
         cell.cellIsOpen(open)
-        cell.changeSwipeImage(open: open)
         
         cellsIsOpen[indexPath.row] = cell.isOpened
+        
+        if sender.direction == .up {
+            let flower = flowers[indexPath.row]
+            if let name = flower.comName, let genus = flower.genus, let species = flower.species {
+                if flower.sightings.count > 0 {
+                    return
+                }
+                
+                BloomAPI().getSightingData(flowerName: name, success: { (data) in
+                    print(data)
+                    if let dictArr = data as? [Dictionary<String,Any>]
+                    {
+                        for dict in dictArr {
+                            let sighting = Sighting(dict: dict)
+                            flower.sightings.append(sighting)
+                        }
+                        
+                        DispatchQueue.main.async {
+                            cell.latinLabel.text = "Genus: \(genus)\nSpecies: \(species)"
+                            
+                            let sighting = flower.sightings
+                            cell.sightingLabel.text = "Sightings from \(sighting.count) friends:\n\n"
+                            
+                            var i = 0
+                            var append = ""
+                            while sighting.count > 0 && (i < sighting.count && i < 3) {
+                                if let person = sighting[i].person {
+                                    append += "\(person), "
+                                }
+                                i += 1
+                            }
+                            append += "etc..."
+                            if let orig = cell.sightingLabel.text  {
+                                cell.sightingLabel.text = orig + append
+                            }
+                        }
+                    }
+                }, failure: { (error) in
+                    print(error.localizedDescription)
+                })
+            }
+        }
+    }
+    
+    @objc func backOpened() {
+        let indexPath = IndexPath(row: currentIndex, section: 0)
+        guard let cell  = collectionView?.cellForItem(at: indexPath) as? BaseCell else { return }
+        if cell.isOpened == true {
+            pushToViewController(getViewController())//, cell: cell)
+            
+            //            if let rightButton = navigationItem.rightBarButtonItem as? AnimatingBarButton {
+            //                rightButton.animationSelected(true)
+            //            }
+        }
     }
     
 }
@@ -180,6 +239,10 @@ extension ViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         pageLabel.text = "\(currentIndex+1)/\(flowers.count)"
     }
+    
+//    func pushToViewController(_ viewController: ExpandingTableViewController, cell: BaseCell) {
+//        super.pushToViewController(viewController)
+//    }
 }
 
 // MARK: UICollectionViewDataSource
@@ -219,16 +282,13 @@ extension ViewController {
 //            }
 //        }
 
-        if let name = flower.comName, let genus = flower.genus, let species = flower.species {
+        if let name = flower.comName {
             cell.customTitle.text = name
-            cell.genusLabel.text = genus
-            cell.speciesLabel.text = species
         }
         
         print(index)
         print(self.flowers.count)
         cell.cellIsOpen(cellsIsOpen[index], animated: false)
-        cell.changeSwipeImage(open: cellsIsOpen[index])
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: IndexPath) {
@@ -256,6 +316,7 @@ extension ViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: BaseCell.self), for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: BaseCell.self), for: indexPath) as? BaseCell else {return UICollectionViewCell()}
+        return cell
     }
 }
